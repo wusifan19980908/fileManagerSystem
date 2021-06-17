@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wusifan.filemanagersystem.dao.SysMenuDao">
+    <select id="permitList" parameterType="integer" resultType="string">
+        select distinct sys_menu.permit
+        from sys_user
+        left join sys_role on sys_role.id = sys_user.role_id
+        left join role_menu  on role_menu.role_id = sys_role.id
+        left join sys_menu  on sys_menu.id = role_menu.menu_id
+        <where>
+            <if test="userId!=null and userId!=''">
+                user.id = #{userId}
+            </if>
+        </where>
+    </select>
+</mapper>

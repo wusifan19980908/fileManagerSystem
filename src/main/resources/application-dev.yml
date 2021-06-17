@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: fileManagerSystem
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/file_manager?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: 170929
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+  redis:
+    host: 127.0.0.1
+    port: 6739
+    database: 6
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 1000
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Dao.xml
+  type-aliases-package: com.wusifan.filemangersystem.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
